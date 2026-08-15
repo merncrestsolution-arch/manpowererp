@@ -1,7 +1,11 @@
 import { NextResponse } from "next/server";
+import NextAuth from "next-auth";
 
-import { auth } from "@/infrastructure/auth/auth";
-import { hasAdminAccess } from "@/infrastructure/auth/roles";
+import { authConfig } from "@/infrastructure/auth/auth.config";
+
+const { auth } = NextAuth(authConfig);
+
+const ADMIN_ROLES = new Set(["SUPER_ADMIN", "ADMIN"]);
 
 export default auth((request) => {
   const { pathname } = request.nextUrl;
@@ -34,7 +38,7 @@ export default auth((request) => {
 
   if (pathname.startsWith("/admin")) {
     const role = session?.user?.role;
-    if (!role || !hasAdminAccess(role)) {
+    if (!role || !ADMIN_ROLES.has(role)) {
       return NextResponse.redirect(new URL("/dashboard", request.url));
     }
   }

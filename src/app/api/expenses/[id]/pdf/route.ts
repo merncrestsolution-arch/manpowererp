@@ -22,9 +22,9 @@ export async function GET(_request: Request, context: RouteContext) {
     return new NextResponse("Expense not found", { status: 404 });
   }
 
-  const context = await getBillingPdfContext(auth.branchId);
+  const billing = await getBillingPdfContext(auth.branchId);
   const pdfBytes = await generateExpensePdf(expense, {
-    companyName: context.companyName,
+    companyName: billing.companyName,
   });
 
   return new NextResponse(Buffer.from(pdfBytes), {

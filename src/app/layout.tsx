@@ -38,7 +38,9 @@ export default function RootLayout({
       <body
         className={`${plusJakartaSans.variable} ${inter.variable} antialiased`}
       >
-        <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
+        {(process.env.UPLOADTHING_TOKEN || process.env.UPLOADTHING_SECRET) && (
+          <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
+        )}
         <AuthSessionProvider>
           <QueryProvider>
             <ThemeProvider>{children}</ThemeProvider>
