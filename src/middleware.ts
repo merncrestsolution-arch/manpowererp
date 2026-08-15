@@ -12,12 +12,14 @@ export default auth((request) => {
   const session = request.auth;
   const isAuthenticated = Boolean(session?.user);
 
-  const publicPaths = ["/login", "/forgot-password"];
+  const publicPaths = ["/login", "/forgot-password", "/download/android"];
   const isPublicRoute =
-    publicPaths.includes(pathname) || pathname.startsWith("/reset-password/");
+    publicPaths.includes(pathname) ||
+    pathname.startsWith("/reset-password/") ||
+    pathname.startsWith("/download/");
 
   if (isPublicRoute) {
-    if (isAuthenticated) {
+    if (isAuthenticated && !pathname.startsWith("/download")) {
       return NextResponse.redirect(new URL("/dashboard", request.url));
     }
     return NextResponse.next();

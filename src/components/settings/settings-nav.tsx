@@ -4,6 +4,7 @@ import { HubNav } from "@/components/shared/hub-nav";
 
 const settingsNavItems = [
   { label: "Company", href: "/settings/company" },
+  { label: "Mobile app", href: "/settings/mobile-app" },
   { label: "Users", href: "/settings/users" },
   { label: "Roles & permissions", href: "/settings/roles-permissions" },
   { label: "Backup", href: "/settings/backup" },

@@ -36,6 +36,9 @@ jobs:
 
       - name: Generate Prisma client
         run: npx prisma generate
+        env:
+          DATABASE_URL: postgresql://jk:jk_ci@localhost:5432/jk_manpower_erp_test
+          DIRECT_URL: postgresql://jk:jk_ci@localhost:5432/jk_manpower_erp_test
 
       - name: Lint
         run: npm run lint
@@ -44,6 +47,7 @@ jobs:
         run: npm run build
         env:
           DATABASE_URL: postgresql://jk:jk_ci@localhost:5432/jk_manpower_erp_test
+          DIRECT_URL: postgresql://jk:jk_ci@localhost:5432/jk_manpower_erp_test
           NEXTAUTH_SECRET: ci-test-secret
           AUTH_SECRET: ci-test-secret
 
@@ -51,6 +55,7 @@ jobs:
         run: npm run test
         env:
           DATABASE_URL: postgresql://jk:jk_ci@localhost:5432/jk_manpower_erp_test
+          DIRECT_URL: postgresql://jk:jk_ci@localhost:5432/jk_manpower_erp_test
           NEXTAUTH_SECRET: ci-test-secret
           AUTH_SECRET: ci-test-secret
 

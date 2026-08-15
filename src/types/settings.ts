@@ -10,6 +10,7 @@ export type CompanySettingsItem = {
   logoUrl: string | null;
   taxId: string | null;
   fiscalYearStart: number;
+  mobileApkUrl: string | null;
   updatedAt: string;
 };
 

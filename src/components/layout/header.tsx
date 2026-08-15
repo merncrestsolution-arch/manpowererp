@@ -2,6 +2,7 @@
 
 import { Menu } from "lucide-react";
 
+import { ApkDownloadButton } from "@/components/layout/apk-download-button";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { NotificationsDropdown } from "@/components/layout/notifications-dropdown";
@@ -48,6 +49,7 @@ export function Header({ user, role }: HeaderProps) {
           </div>
 
           <div className="flex h-9 shrink-0 items-center gap-1">
+            <ApkDownloadButton className="hidden sm:inline-flex" />
             <NotificationsDropdown />
             <ThemeToggle />
             <UserMenu user={user} />

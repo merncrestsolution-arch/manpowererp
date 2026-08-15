@@ -17,6 +17,7 @@ function mapSettings(record: {
   logoUrl: string | null;
   taxId: string | null;
   fiscalYearStart: number;
+  mobileApkUrl: string | null;
   updatedAt: Date;
 }): CompanySettingsItem {
   return {
@@ -31,6 +32,7 @@ function mapSettings(record: {
     logoUrl: record.logoUrl,
     taxId: record.taxId,
     fiscalYearStart: record.fiscalYearStart,
+    mobileApkUrl: record.mobileApkUrl,
     updatedAt: record.updatedAt.toISOString(),
   };
 }
@@ -66,6 +68,7 @@ export async function getCompanySettings(
       logoUrl: null,
       taxId: null,
       fiscalYearStart: 1,
+      mobileApkUrl: null,
       updatedAt: new Date().toISOString(),
     };
   }
@@ -100,6 +103,7 @@ export async function updateCompanySettings({
     logoUrl: input.logoUrl || null,
     taxId: input.taxId || null,
     fiscalYearStart: input.fiscalYearStart,
+    mobileApkUrl: input.mobileApkUrl || null,
     updatedBy: userId,
   };
 

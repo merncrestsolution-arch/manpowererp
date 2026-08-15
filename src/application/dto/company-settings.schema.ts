@@ -10,6 +10,11 @@ export const updateCompanySettingsSchema = z.object({
   logoUrl: z.string().url().optional().or(z.literal("")),
   taxId: z.string().optional(),
   fiscalYearStart: z.coerce.number().int().min(1).max(12),
+  mobileApkUrl: z
+    .string()
+    .url("Enter a valid APK URL")
+    .optional()
+    .or(z.literal("")),
 });
 
 export type UpdateCompanySettingsInput = z.infer<

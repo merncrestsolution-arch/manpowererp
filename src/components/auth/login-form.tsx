@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowRight, Eye, EyeOff, Loader2 } from "lucide-react";
+import { ArrowRight, Download, Eye, EyeOff, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
@@ -191,6 +191,14 @@ export function LoginForm({
           )}
         </Button>
       </form>
+
+      <Link
+        href="/download/android"
+        className="text-muted-foreground hover:text-foreground mt-8 flex items-center justify-center gap-2 text-sm font-medium"
+      >
+        <Download className="size-4" aria-hidden="true" />
+        Download Android APK
+      </Link>
     </div>
   );
 }

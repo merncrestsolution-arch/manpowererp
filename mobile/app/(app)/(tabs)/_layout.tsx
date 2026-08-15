@@ -1,4 +1,4 @@
-import { SymbolView } from "expo-symbols";
+import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 
 import { colors } from "@/constants/theme";
@@ -7,36 +7,38 @@ export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerShown: true,
-        headerStyle: {
-          backgroundColor: colors.surface,
-        },
-        headerTitleStyle: {
-          fontWeight: "700",
-          color: colors.onSurface,
-        },
+        headerShown: false,
         tabBarActiveTintColor: colors.primary,
-        tabBarInactiveTintColor: colors.onSurfaceVariant,
+        tabBarInactiveTintColor: "#94a3b8",
         tabBarStyle: {
-          backgroundColor: colors.surfaceContainerLowest,
-          borderTopColor: colors.outline,
+          backgroundColor: "#ffffff",
+          borderTopColor: "transparent",
+          height: 68,
+          paddingBottom: 10,
+          paddingTop: 8,
+          elevation: 12,
+        },
+        tabBarLabelStyle: {
+          fontSize: 11,
+          fontWeight: "700",
         },
       }}
     >
       <Tabs.Screen
         name="dashboard"
         options={{
-          title: "Dashboard",
-          tabBarIcon: ({ color }) => (
-            <SymbolView
-              name={{
-                ios: "square.grid.2x2.fill",
-                android: "dashboard",
-                web: "dashboard",
-              }}
-              tintColor={color}
-              size={24}
-            />
+          title: "Home",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="grid" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="attendance"
+        options={{
+          title: "Attendance",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="locate" color={color} size={size} />
           ),
         }}
       />
@@ -44,12 +46,8 @@ export default function TabsLayout() {
         name="profile"
         options={{
           title: "Profile",
-          tabBarIcon: ({ color }) => (
-            <SymbolView
-              name={{ ios: "person.fill", android: "person", web: "person" }}
-              tintColor={color}
-              size={24}
-            />
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person" color={color} size={size} />
           ),
         }}
       />

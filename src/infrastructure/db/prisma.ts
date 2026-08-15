@@ -5,6 +5,10 @@ const globalForPrisma = globalThis as unknown as {
 };
 
 function ensureDatabaseUrl() {
+  if (process.env.DATABASE_URL && !process.env.DIRECT_URL) {
+    process.env.DIRECT_URL = process.env.DATABASE_URL;
+  }
+
   if (process.env.DATABASE_URL) {
     return;
   }
@@ -14,6 +18,7 @@ function ensureDatabaseUrl() {
   if (process.env.NEXT_PHASE === "phase-production-build") {
     process.env.DATABASE_URL =
       "postgresql://build:build@127.0.0.1:5432/build?schema=public";
+    process.env.DIRECT_URL ??= process.env.DATABASE_URL;
   }
 }
 

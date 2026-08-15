@@ -9,7 +9,7 @@ export default function SettingsLayout({
   return (
     <PageShell
       title="Settings"
-      description="Organization profile, users, permissions, and backups."
+      description="Organization profile, mobile app, users, permissions, and backups."
     >
       <SettingsNav />
       {children}

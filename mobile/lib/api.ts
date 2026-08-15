@@ -1,6 +1,12 @@
 import Constants from "expo-constants";
 
-import type { ApiResponse, LoginResponse, User } from "@/lib/types";
+import type {
+  AndroidApkInfo,
+  ApiResponse,
+  LoginResponse,
+  MobileDashboard,
+  User,
+} from "@/lib/types";
 
 function getApiBaseUrl(): string {
   const envUrl = process.env.EXPO_PUBLIC_API_URL;
@@ -55,6 +61,46 @@ export async function getCurrentUser(
       Authorization: `Bearer ${token}`,
     },
   });
+}
+
+export async function getMobileDashboard(
+  token: string,
+): Promise<ApiResponse<MobileDashboard>> {
+  return request<MobileDashboard>("/api/mobile/dashboard", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+export async function mobileCheckIn(
+  token: string,
+  payload: { method: "GPS"; latitude: number; longitude: number },
+): Promise<ApiResponse<unknown>> {
+  return request("/api/mobile/attendance/check-in", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function mobileCheckOut(
+  token: string,
+  payload: { method: "GPS"; latitude: number; longitude: number },
+): Promise<ApiResponse<unknown>> {
+  return request("/api/mobile/attendance/check-out", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function getAndroidApk(): Promise<ApiResponse<AndroidApkInfo>> {
+  return request<AndroidApkInfo>("/api/public/android-apk");
 }
 
 export { API_BASE_URL };

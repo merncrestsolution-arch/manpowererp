@@ -35,6 +35,7 @@ export function CompanySettingsForm() {
       logoUrl: settings?.logoUrl ?? "",
       taxId: settings?.taxId ?? "",
       fiscalYearStart: settings?.fiscalYearStart ?? 1,
+      mobileApkUrl: settings?.mobileApkUrl ?? "",
     },
   });
 

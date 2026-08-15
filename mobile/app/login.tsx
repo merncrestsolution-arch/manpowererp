@@ -1,3 +1,4 @@
+import { LinearGradient } from "expo-linear-gradient";
 import { Redirect } from "expo-router";
 import { useState } from "react";
 import {
@@ -11,7 +12,6 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import { BrandHeader } from "@/components/brand-header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { colors, radius, spacing } from "@/constants/theme";
@@ -38,9 +38,7 @@ export default function LoginScreen() {
     }
 
     setIsSubmitting(true);
-
     const loginError = await login(email.trim(), password, rememberMe);
-
     setIsSubmitting(false);
 
     if (loginError) {
@@ -49,115 +47,148 @@ export default function LoginScreen() {
   };
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <KeyboardAvoidingView
-        style={styles.flex}
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
-      >
-        <ScrollView
-          contentContainerStyle={styles.scrollContent}
-          keyboardShouldPersistTaps="handled"
+    <LinearGradient
+      colors={["#041433", "#0b3d91", "#123a73"]}
+      style={styles.flex}
+    >
+      <SafeAreaView style={styles.flex}>
+        <KeyboardAvoidingView
+          style={styles.flex}
+          behavior={Platform.OS === "ios" ? "padding" : undefined}
         >
-          <BrandHeader subtitle="Enterprise ERP" />
-
-          <View style={styles.hero}>
-            <Text style={styles.heading}>Welcome back</Text>
-            <Text style={styles.description}>
-              Sign in to manage schedules, payroll, and your team on the go.
-            </Text>
-          </View>
-
-          <View style={styles.card}>
-            {error ? (
-              <View style={styles.errorBanner}>
-                <Text style={styles.errorText}>{error}</Text>
-              </View>
-            ) : null}
-
-            <Input
-              label="Employee ID or Email"
-              value={email}
-              onChangeText={setEmail}
-              autoCapitalize="none"
-              autoComplete="email"
-              keyboardType="email-address"
-              textContentType="emailAddress"
-            />
-
-            <Input
-              label="Password"
-              value={password}
-              onChangeText={setPassword}
-              secureTextEntry
-              autoComplete="password"
-              textContentType="password"
-            />
-
-            <Pressable
-              accessibilityRole="checkbox"
-              accessibilityState={{ checked: rememberMe }}
-              onPress={() => setRememberMe((value) => !value)}
-              style={styles.rememberRow}
-            >
-              <View
-                style={[styles.checkbox, rememberMe && styles.checkboxChecked]}
+          <ScrollView
+            contentContainerStyle={styles.scrollContent}
+            keyboardShouldPersistTaps="handled"
+          >
+            <View style={styles.brandMark}>
+              <LinearGradient
+                colors={["#50b2fe", "#2563eb"]}
+                style={styles.logo}
               >
-                {rememberMe ? <Text style={styles.checkmark}>✓</Text> : null}
-              </View>
-              <Text style={styles.rememberLabel}>Remember me</Text>
-            </Pressable>
+                <Text style={styles.logoGlyph}>JK</Text>
+              </LinearGradient>
+              <Text style={styles.brand}>JK Manpower</Text>
+              <Text style={styles.kicker}>FIELD COMMAND</Text>
+            </View>
 
-            <Button
-              title="Sign In"
-              loading={isSubmitting}
-              onPress={handleSubmit}
-            />
-          </View>
-        </ScrollView>
-      </KeyboardAvoidingView>
-    </SafeAreaView>
+            <Text style={styles.heading}>
+              Your workforce,{"\n"}in your pocket.
+            </Text>
+            <Text style={styles.description}>
+              Clock in with GPS, follow today&apos;s shift, and keep payroll at
+              hand — designed for the floor, not the desktop.
+            </Text>
+
+            <View style={styles.card}>
+              {error ? (
+                <View style={styles.errorBanner}>
+                  <Text style={styles.errorText}>{error}</Text>
+                </View>
+              ) : null}
+
+              <Input
+                label="Employee ID or Email"
+                value={email}
+                onChangeText={setEmail}
+                autoCapitalize="none"
+                autoComplete="email"
+                keyboardType="email-address"
+                textContentType="emailAddress"
+              />
+
+              <Input
+                label="Password"
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry
+                autoComplete="password"
+                textContentType="password"
+              />
+
+              <Pressable
+                accessibilityRole="checkbox"
+                accessibilityState={{ checked: rememberMe }}
+                onPress={() => setRememberMe((value) => !value)}
+                style={styles.rememberRow}
+              >
+                <View
+                  style={[
+                    styles.checkbox,
+                    rememberMe && styles.checkboxChecked,
+                  ]}
+                >
+                  {rememberMe ? <Text style={styles.checkmark}>✓</Text> : null}
+                </View>
+                <Text style={styles.rememberLabel}>Remember me</Text>
+              </Pressable>
+
+              <Button
+                title="Enter workspace"
+                loading={isSubmitting}
+                onPress={handleSubmit}
+              />
+            </View>
+          </ScrollView>
+        </KeyboardAvoidingView>
+      </SafeAreaView>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: colors.surface,
-  },
-  flex: {
-    flex: 1,
-  },
+  flex: { flex: 1 },
   scrollContent: {
     flexGrow: 1,
     padding: spacing.lg,
-    gap: spacing.lg,
+    gap: spacing.md,
+    justifyContent: "center",
   },
-  hero: {
-    gap: spacing.sm,
-    marginTop: spacing.md,
+  brandMark: {
+    alignItems: "flex-start",
+    gap: 8,
+    marginBottom: spacing.sm,
+  },
+  logo: {
+    width: 56,
+    height: 56,
+    borderRadius: 18,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  logoGlyph: {
+    color: "#fff",
+    fontSize: 20,
+    fontWeight: "800",
+    letterSpacing: 1,
+  },
+  brand: {
+    color: "#fff",
+    fontSize: 20,
+    fontWeight: "700",
+  },
+  kicker: {
+    color: colors.accentCyan,
+    fontSize: 11,
+    fontWeight: "700",
+    letterSpacing: 3,
   },
   heading: {
-    fontSize: 24,
-    fontWeight: "700",
-    color: colors.onSurface,
+    fontSize: 32,
+    lineHeight: 38,
+    fontWeight: "800",
+    color: "#fff",
   },
   description: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: colors.onSurfaceVariant,
+    fontSize: 15,
+    lineHeight: 22,
+    color: "rgba(226,232,240,0.86)",
+    marginBottom: spacing.sm,
   },
   card: {
-    backgroundColor: colors.surfaceContainerLowest,
+    backgroundColor: "rgba(255,255,255,0.96)",
     borderRadius: radius.xl,
     padding: spacing.lg,
     gap: spacing.md,
-    borderWidth: 1,
-    borderColor: colors.outline,
-    shadowColor: "#000",
-    shadowOpacity: 0.03,
-    shadowRadius: 12,
-    shadowOffset: { width: 0, height: 4 },
-    elevation: 2,
   },
   errorBanner: {
     backgroundColor: colors.errorContainer,
@@ -176,12 +207,11 @@ const styles = StyleSheet.create({
   checkbox: {
     width: 20,
     height: 20,
-    borderRadius: 4,
+    borderRadius: 6,
     borderWidth: 1,
     borderColor: colors.outline,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: colors.surfaceContainerLowest,
   },
   checkboxChecked: {
     backgroundColor: colors.primary,
