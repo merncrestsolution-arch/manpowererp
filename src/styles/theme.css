@@ -1,0 +1,118 @@
+/**
+ * JK Manpower ERP — Stitch Design Tokens
+ * Source: Google Stitch — JK Manpower Enterprise ERP (Executive Precision)
+ * Project: https://stitch.withgoogle.com/projects/14094181366976603289
+ */
+
+:root {
+  --jk-surface: #eef3f8;
+  --jk-surface-dim: #d8dadc;
+  --jk-surface-bright: #f7f9fb;
+  --jk-surface-container-lowest: #ffffff;
+  --jk-surface-container-low: #f2f4f6;
+  --jk-surface-container: #eceef0;
+  --jk-surface-container-high: #e6e8ea;
+  --jk-surface-container-highest: #e0e3e5;
+  --jk-surface-variant: #e0e3e5;
+  --jk-surface-tint: #0088d1;
+
+  --jk-on-surface: #191c1e;
+  --jk-on-surface-variant: #434655;
+  --jk-on-background: #191c1e;
+
+  --jk-inverse-surface: #2d3133;
+  --jk-inverse-on-surface: #eff1f3;
+
+  --jk-outline: #737686;
+  --jk-outline-variant: #c3c6d7;
+
+  --jk-primary: #0a2b58;
+  --jk-primary-container: #0088d1;
+  --jk-on-primary: #ffffff;
+  --jk-on-primary-container: #eeefff;
+  --jk-inverse-primary: #b4c5ff;
+  --jk-primary-fixed: #dbe1ff;
+  --jk-primary-fixed-dim: #b4c5ff;
+  --jk-on-primary-fixed: #00174b;
+  --jk-on-primary-fixed-variant: #003ea8;
+
+  --jk-secondary: #006c49;
+  --jk-secondary-container: #6cf8bb;
+  --jk-on-secondary: #ffffff;
+  --jk-on-secondary-container: #00714d;
+  --jk-secondary-fixed: #6ffbbe;
+  --jk-secondary-fixed-dim: #4edea3;
+  --jk-on-secondary-fixed: #002113;
+  --jk-on-secondary-fixed-variant: #005236;
+
+  --jk-tertiary: #46566c;
+  --jk-tertiary-container: #5e6e85;
+  --jk-on-tertiary: #ffffff;
+  --jk-on-tertiary-container: #e9f0ff;
+  --jk-tertiary-fixed: #d3e4fe;
+  --jk-tertiary-fixed-dim: #b7c8e1;
+  --jk-on-tertiary-fixed: #0b1c30;
+  --jk-on-tertiary-fixed-variant: #38485d;
+
+  --jk-error: #ba1a1a;
+  --jk-on-error: #ffffff;
+  --jk-error-container: #ffdad6;
+  --jk-on-error-container: #93000a;
+
+  --jk-accent-emerald: #10b981;
+  --jk-navy: #041433;
+  --jk-navy-mid: #0a2b58;
+  --jk-cyan: #0088d1;
+  --jk-cyan-soft: #50b2fe;
+
+  --jk-font-heading: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --jk-font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --jk-radius-sm: 0.25rem;
+  --jk-radius-default: 0.5rem;
+  --jk-radius-md: 0.75rem;
+  --jk-radius-lg: 1rem;
+  --jk-radius-xl: 1.5rem;
+  --jk-radius-full: 9999px;
+
+  --jk-spacing-xs: 4px;
+  --jk-spacing-sm: 8px;
+  --jk-spacing-md: 16px;
+  --jk-spacing-lg: 24px;
+  --jk-spacing-xl: 40px;
+  --jk-spacing-unit: 8px;
+  --jk-sidebar-width: 272px;
+  --jk-sidebar-collapsed-width: 76px;
+  --jk-header-height: 64px;
+  --jk-container-max: 1440px;
+  --jk-gutter: 40px;
+
+  --jk-shadow-card:
+    0 1px 2px rgba(10, 43, 88, 0.04), 0 8px 24px rgba(10, 43, 88, 0.06);
+  --jk-shadow-elevated: 0 12px 32px rgba(10, 43, 88, 0.1);
+  --jk-shadow-modal: 0 16px 40px rgba(10, 43, 88, 0.12);
+}
+
+.dark {
+  --jk-surface: #2d3133;
+  --jk-surface-dim: #191c1e;
+  --jk-surface-bright: #3a3f42;
+  --jk-surface-container-lowest: #191c1e;
+  --jk-surface-container-low: #25282b;
+  --jk-surface-container: #2d3133;
+  --jk-surface-container-high: #363a3d;
+  --jk-surface-container-highest: #3f4447;
+  --jk-surface-variant: #434655;
+  --jk-on-surface: #eff1f3;
+  --jk-on-surface-variant: #c3c6d7;
+  --jk-on-background: #eff1f3;
+  --jk-inverse-surface: #eff1f3;
+  --jk-inverse-on-surface: #2d3133;
+  --jk-outline: #8b909e;
+  --jk-outline-variant: #434655;
+  --jk-primary: #b4c5ff;
+  --jk-primary-container: #2563eb;
+  --jk-on-primary: #00174b;
+  --jk-on-primary-container: #eeefff;
+  --jk-inverse-primary: #004ac6;
+}

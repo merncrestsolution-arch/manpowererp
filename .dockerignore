@@ -1,0 +1,17 @@
+node_modules
+.next
+.git
+.github
+docs
+coverage
+storage
+.env
+.env.*
+!.env.example
+*.log
+mobile
+jk_manpower_mobile
+terminals
+.cursor
+playwright-report
+test-results

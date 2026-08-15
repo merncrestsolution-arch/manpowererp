@@ -1,0 +1,49 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: jk-manpower-postgres
+    restart: unless-stopped
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: jk
+      POSTGRES_PASSWORD: jk_local_dev
+      POSTGRES_DB: jk_manpower_erp
+    volumes:
+      - jk_manpower_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U jk -d jk_manpower_erp"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: jk-manpower-mailhog
+    restart: unless-stopped
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: jk-manpower-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://jk:jk_local_dev@postgres:5432/jk_manpower_erp
+      NEXTAUTH_URL: http://localhost:3000
+      NEXTAUTH_SECRET: local-dev-secret-change-in-production
+      AUTH_SECRET: local-dev-secret-change-in-production
+      SMTP_HOST: mailhog
+      SMTP_PORT: 1025
+      SMTP_FROM: noreply@jkmanpower.local
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  jk_manpower_pgdata:
